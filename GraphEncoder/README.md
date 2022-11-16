@@ -10,6 +10,8 @@ Contents in the file [IMGgraph.ipynb](IMGgraph)
 3. Code for Graph Auto-Encoder and Variation Graph Auto-Encoder
 Contents in the file [GAE_VGAE.ipynb](GAE_VGAE)
 
+You also can simulate all the steps in one round using the file: [VGAE_all.ipynb](VGAE_all)
+
 ## 1. Cart-Pole
 ### _Some useful variants of openai-gym environment_
 
@@ -25,7 +27,6 @@ Cart-Pole [Custom] is a modified version of openai-gym cartpole v1 that is devel
     - _Known issue: a window is rendered and set to hidden during viewer initialization to avoid generating empty pixel outputs_
 - Pixel views can be compressed to low resolution views with env.down_scale()
 - Reward is modified based on the deviation from the refernce state [_to be improved in future_]
-
 
 ### cart_pole_discreet.py:
 
@@ -44,4 +45,15 @@ For testing with exporting views.
 
 ```python
 pip install opencv-python
+```
+
+## 3. Variation Graph Auto-Encoder
+### Installation
+
+Install the dependencies.
+```python
+pip install -q torch-scatter -f https://pytorch-geometric.com/whl/torch-1.8.0+cu101.html
+pip install -q torch-sparse -f https://pytorch-geometric.com/whl/torch-1.8.0+cu101.html
+pip install -q torch-geometric
+pip install -q munkres
 ```
