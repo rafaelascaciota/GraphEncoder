@@ -38,7 +38,7 @@ Install the dependencies.
 
 ```python
 pip install -U gym
-pip install -U pyglet
+pip install -U pyglet==1.5.27
 ```
 
 For testing with exporting views.
