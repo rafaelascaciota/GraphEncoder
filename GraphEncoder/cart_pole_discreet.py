@@ -4,7 +4,6 @@ Copied from http://incompleteideas.net/sutton/book/code/pole.c
 permalink: https://perma.cc/C9ZM-652R
 """
 import os
-import datetime
 import math
 import gym
 from gym import spaces, logger
@@ -280,19 +279,24 @@ if __name__ == "__main__":
 
     env = CartPoleEnv()
     num_actions = env.action_space.n
-
     rewards = 0
     steps = 0
     done = False
     env.reset(initial_angle=0.)
-    os.chdir('.\data')
-    mydir = os.path.join(os.getcwd(), datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
-    createFolder(mydir)
+    all_folders = os.listdir('./data')
 
+    os.chdir('./data')
+    retval = os.getcwd()
+    all_folders.sort()
+    latest = all_folders[-1].replace('S', '')
+    new = int(latest) + 1
+    mydir = 'S'+str(new)
+    createFolder(mydir)
+    os.chdir(mydir)
     while not done:
-        temp = env.render(mode='rgb_array', color_type='black_and_white', show=False)
-        temp = down_scale(input_arr=temp, scale=20)
-        os.chdir(mydir)
+        temp = env.render(mode='rgb_array', show=False)
+        # temp = down_scale(input_arr=temp, scale=20)
+
         cv2.imwrite('Frame' + str(steps) + '.png', temp)
         action = np.random.randint(num_actions)
         observation, reward, done, _ = env.step(action)
